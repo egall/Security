@@ -1,0 +1,50 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+\tikzstyle{tool} = [draw, ellipse, fill=orange!20, node distance=2cm,
+    minimum height=2em, text width = 0.5cm, text centered]
+    
+\begin{tikzpicture}[node distance = 3cm, sibling distance=2cm, auto]
+    % Place nodes
+    \node [decision] (remote) {Have\\Remote\\Access?};
+    \node [cloud, left=2cm of remote] (yaremote) {Remote\\Access}
+        child { node (xsf) [attacktype] {Cross\\Site\\Forgery}}
+        child { node (xss) [attacktype] {Cross\\Site\\Scripting}}
+        child { node (idor) [attacktype] {Insecure\\Direct\\Object\\Reference}}
+        child { node (rfi) [attacktype] {Remote\\File\\Include}}
+        child { node (seshfix) [attacktype] {Session\\Fixation}}
+        child { node (cominj) [attacktype, below=4cm of yaremote]  {Command\\Injection}
+            child { node (nc) [tool] {Netcat}}
+        }
+        child { node (clickj) [attacktype] {Click\\Jack}}
+        child { node (sql) [attacktype] {SQL\\Injection}};
+
+    \node [cloud, below=2cm of remote] (noremote) {No\\Remote\\Access} 
+        child { node (soceng) [attacktype, below=1cm of noremote] {Social Engineering}
+            child { node (Spearfishing) [attacktype, below=1cm of soceng] {Spearfishing}}
+        };
+    
+    % Draw edges
+    \path [line] (remote) -- node [near start] {yes} (noremote);
+    \path [line] (remote) -- node [near start] {no} (yaremote);
+\end{tikzpicture}
+
+
+\end{document}

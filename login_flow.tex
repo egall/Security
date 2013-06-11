@@ -1,0 +1,70 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+    
+\begin{tikzpicture}[node distance = 2cm, sibling distance=3.5cm, auto]
+    % Place nodes
+    \node [decision] (init) {Login \\ Capabilities?};
+    \node [cloud, left of=init] (login) {Login};
+    \node [cloud, right of=init] (nologin) {No Login};
+    \node [block, below of=login] (privesc) {Privilege Escalation}
+        child { node (chroot) [attacktype] {Chroot} }
+        child { node (retlibc) [attacktype] {Return \\ To \\ Libc} }
+        child { node (setuid) [attacktype] {Set \\ UID}}
+        child { node (formatstr) [attacktype] {Format \\ String}}
+        child { node (racecond) [attacktype] {Race \\ Condition}};
+    \node [decision, below=4cm of nologin] (phys) {Have\\Physical\\Access?};
+    \node [cloud, left of=phys] (nophys) {No Phys}; 
+    \node [cloud, below of=phys] (yaphys) {Physical\\Access}; 
+
+        
+%        \child { 
+%            node (setuid) {Set UID}
+%        }
+%    node [attacktype, below of=privesc] (chroot) {Chroot};
+%    \node [attacktype, below of=privesc] (setuid) {Set UID};
+   
+    
+%    \node [cloud, left of=init] (expert) {expert};
+%    \node [cloud, right of=init] (system) {system};
+%    \node [block, below of=init] (identify) {identify candidate models};
+%    \node [block, below of=identify] (evaluate) {evaluate candidate models};
+%    \node [block, left of=evaluate, node distance=3cm] (update) {update model};
+%    \node [decision, below of=evaluate] (decide) {is best candidate better?};
+%    \node [block, below of=decide, node distance=3cm] (stop) {stop};
+    % Draw edges
+    \path [line] (init) -- node [near start] {yes} (login);
+    \path [line] (init) -- node [near start] {no} (nologin);
+    \path [line] (login) -- (privesc);
+    \path [line] (nologin) -- (phys);
+    \path [line] (phys) -- node [near start] {yes} (nophys);
+    \path [line] (phys) -- node [near start] {no} (yaphys);
+%    \path [line] (init) -- (identify);
+%    \path [line] (identify) -- (evaluate);
+%    \path [line] (evaluate) -- (decide);
+%    \path [line] (decide) -| node [near start] {yes} (update);
+%    \path [line] (update) |- (identify);
+%    \path [line] (decide) -- node {no}(stop);
+%    \path [line,dashed] (expert) -- (init);
+%    \path [line,dashed] (system) -- (init);
+%    \path [line,dashed] (system) |- (evaluate);
+\end{tikzpicture}
+
+
+\end{document}

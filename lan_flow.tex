@@ -1,0 +1,87 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+\tikzstyle{tool} = [draw, ellipse, fill=orange!20, node distance=2cm,
+    minimum height=2em, text width = 0.5cm, text centered]
+
+\tikzstyle{level 1}=[sibling distance=2cm]
+\tikzstyle{level 2}=[sibling distance=1cm]
+    
+    
+\begin{tikzpicture}[node distance = 3cm, auto, every node/.style={ anchor=center}]
+    % Place nodes
+    \node [decision] (lan) {Have\\LAN\\Access?};
+    \node [cloud, left=5cm of lan] (yalan) {LAN\\Access}
+        child { node (sniff) [attacktype] {Network Sniffer}
+            child { node (wireshark) [tool] {Wire-\\shark}}
+            child { node (tcpdump) [tool,below=2cm of sniff] {TCP-\\dump}}
+        }
+        child { node (scan) [attacktype] {Network Scanners}
+            child { node (nmap) [tool] {Nmap}}
+            child { node (ness) [tool, below=2cm of scan] {Nessus}}
+        }
+        child { node (dns) [attacktype] {DNS}
+            child { node (maltigo) [tool, below=2cm of dns] {Maltigo}}
+            child { node (dnsmap) [tool] {DNSmap}}
+        }
+        child { node (protocol) [attacktype] {Protocol Weakness}
+            child { node (icmpredir) [tool, below=2cm of protocol] {ICMP\\Redirect}} 
+            child { node (tcprst) [tool] {TCP-RST}}
+        }
+        child { node (dos) [attacktype] {Denial Of Service}
+            child { node (loic) [tool, below=2cm of dos] {Low\\Orbit\\Ion\\Cannon}}
+            child { node (sloloris) [tool] {Slow Loris}}
+        };
+        
+    \node [cloud, below=1cm of lan] (nolan) {No\\LAN\\Access};
+    \node [decision, below=4cm of nolan] (remote) {Have\\Remote\\Access?};
+    \node [attacktype, below=6cm of yalan] (mitm) {Man\\In\\The\\Middle}
+        child { node (sub) [tool, below=1cm of mitm] {Subterfuge}};
+
+    
+    
+    
+%    \node [decision] (init) {Login \\ Capabilities?};
+%    \node [cloud, left of=init] (login) {Login};
+%    \node [cloud, right of=init] (nologin) {No Login};
+%    \node [block, below of=login] (privesc) {Privilege Escalation}
+%        child { node (chroot) [attacktype] {Chroot} }
+%        child { node (retlibc) [attacktype] {Return \\ To \\ Libc} }
+%        child { node (setuid) [attacktype] {Set \\ UID}}
+%        child { node (formatstr) [attacktype] {Format \\ String}}
+%        child { node (racecond) [attacktype] {Race \\ Condition}};
+%    \node [decision, below=4cm of nologin] (phys) {Have\\Physical\\Access?};
+%    \node [cloud, left of=phys] (nophys) {No Phys}; 
+%    \node [cloud, below of=phys] (yaphys) {Physical\\Access}; 
+
+        
+    % Draw edges
+%    \path [line] (init) -- node [near start] {yes} (login);
+%    \path [line] (init) -- node [near start] {no} (nologin);
+%    \path [line] (login) -- (privesc);
+%    \path [line] (nologin) -- (phys);
+    \path [line] (nolan) -- (remote);
+    \path [line] (yalan) -- (mitm);
+    \path [line] (lan) -- node [near start] {yes} (nolan);
+    \path [line] (lan) -- node [near start] {no} (yalan);
+\end{tikzpicture}
+
+
+\end{document}

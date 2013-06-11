@@ -1,0 +1,59 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+    
+\begin{tikzpicture}[node distance = 3cm, sibling distance=3.5cm, auto]
+    % Place nodes
+    \node [decision] (phys) {Have\\Physical\\Access?};
+    \node [cloud, left=2cm of phys] (yaphys) {Physical\\Access}
+        child { node (hardmod) [attacktype] {Hardware Modification}}
+        child { node (Con) [attacktype] {Steal/\\Confiscate}}
+        child { node (Sab) [attacktype] {Sabotage}};
+    \node [cloud, right=2cm of phys] (nophys) {No Phys} 
+        child { node (soceng) [attacktype] {Social Engineering}}
+        child { node (lockpick) [attacktype] {Lock Pick}};
+    \node [decision, below=4cm of nophys] (LAN) {Have\\LAN\\Access?};
+    
+%    \node [decision] (init) {Login \\ Capabilities?};
+%    \node [cloud, left of=init] (login) {Login};
+%    \node [cloud, right of=init] (nologin) {No Login};
+%    \node [block, below of=login] (privesc) {Privilege Escalation}
+%        child { node (chroot) [attacktype] {Chroot} }
+%        child { node (retlibc) [attacktype] {Return \\ To \\ Libc} }
+%        child { node (setuid) [attacktype] {Set \\ UID}}
+%        child { node (formatstr) [attacktype] {Format \\ String}}
+%        child { node (racecond) [attacktype] {Race \\ Condition}};
+%    \node [decision, below=4cm of nologin] (phys) {Have\\Physical\\Access?};
+%    \node [cloud, left of=phys] (nophys) {No Phys}; 
+%    \node [cloud, below of=phys] (yaphys) {Physical\\Access}; 
+
+        
+    % Draw edges
+%    \path [line] (init) -- node [near start] {yes} (login);
+%    \path [line] (init) -- node [near start] {no} (nologin);
+%    \path [line] (login) -- (privesc);
+%    \path [line] (nologin) -- (phys);
+    \path [line] (nophys) -- (LAN);
+    \path [line] (phys) -- node [near start] {yes} (nophys);
+    \path [line] (phys) -- node [near start] {no} (yaphys);
+\end{tikzpicture}
+
+
+\end{document}
