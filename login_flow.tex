@@ -18,7 +18,7 @@
 \tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
     minimum height=2em, text width = 1cm]
     
-\begin{tikzpicture}[node distance = 2cm, sibling distance=3.5cm, auto]
+\begin{tikzpicture}[node distance = 2cm, sibling distance=3cm, auto]
     % Place nodes
     \node [decision] (init) {Login \\ Capabilities?};
     \node [cloud, left of=init] (login) {Login};
@@ -28,7 +28,8 @@
         child { node (retlibc) [attacktype] {Return \\ To \\ Libc} }
         child { node (setuid) [attacktype] {Set \\ UID}}
         child { node (formatstr) [attacktype] {Format \\ String}}
-        child { node (racecond) [attacktype] {Race \\ Condition}};
+        child { node (racecond) [attacktype] {Race \\ Condition}}
+        child { node (pass) [attacktype, below=3cm of privesc] {Password\\Cracking}};
     \node [decision, below=4cm of nologin] (phys) {Have\\Physical\\Access?};
     \node [cloud, left of=phys] (nophys) {No Phys}; 
     \node [cloud, below of=phys] (yaphys) {Physical\\Access}; 

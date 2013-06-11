@@ -28,4 +28,40 @@ The offensive positions depend largely on the existing levels of access that one
 \section{Defensive}
 The defensive positions are the opposite of the offensive access levels. The best position being one where the opponent has no access to the targeted system. This can be achieved by having a proper locking system. I consider encryption and physical locks to be similar in this respect, but choose to keep them separate to avoid confusion. The next line of defense would be the firewall, this may be confusing, as the locks/encryption serve as more of a "wall" and the firewall is more like a "gate" would be on the wall. None the less, the firewall has the ability to keep the attacker on the perimeter of the system by blocking known attacks/opponents. In most cases however, it will be necessary to give access to the computer system being defended. This opens up routes for the attacker to get into the system. In this case, the locks and firewalls wont do much good, the next line of defense is having a robust intrusion detection system. A good intrusion detection system will keep records of anomalies, which usually indicate suspicious activity. Additionally, most intrusion detection systems also have some sort of alert to let the defending party know that there is questionable activity going on. Finally, we have the case where the system has already been compromised. In this case, it is necessary to do forensics in order to determine what the attacker did and how they got into the system. This would be the last ditch effort, but can also be preventative in the case that an attacker is wary of intruding for fear of future retribution. 
 
+
+\section{Login Capabilities}
+
+This is the primary attack position. From this position the attacker already has access to the system that they want to compromise, however they may want to expand their privileges which can be done in a number of ways. The tactics I have listed are return-to-libc, chroot, set UID, format string, and race conditions. Examples of all of these attacks can be found at: www.cis.syr.edu/~wedu/seed/all\_labs.html.\\
+I didn't include setting up a backdoor because it is assumed that the user already has access, but it should be noted that if the privilege escalation is successful a backdoor may be a necessary option.\\
+I also omitted anything about covering up tracks, as I assumed that it was too case specific, but this is also an aspect that I need to do more research on.\\
+
+\section{Physical Access}
+Physical access is an extremely dangerous position and should probably be listed at the top of the offensive positions. Much of the power of physical access depends on what the attackers motives are. If the attacker wishes to do harm and does not run the risk of redemption, sabotage or confiscation are both valid and effective options. If the attacker wishes to be more stealthy a hardware modification is a valid option too. One attack that I omitted from this swapping, as it is very case specific and in most cases infeasible.\\
+If the attacker does not have physical access, I imagine they have two options: picking a lock or breaking in by some other means, or by manipulating a person who does have access via social engineering.\\
+
+\section{LAN access}
+This is the position that has the most potential attacks, however if the target system is properly defended it is very difficult to pull most off. Though this diagram lists most of the attacks on the same level, there would be more of a progression of attacks for the offender. Most attacks would start with either a network scan, or by passively sniffing the network to determine the exact position of the target computer. From there, a number of exploits can be utilized. I included most of them under the protocol weakness attack category (examples can be found at the Syracuse seed labs referenced above), some of them being exploits that I put in the remote access position to avoid redundancy. Other effective attacks are man-in-the-middle attacks such as Subterfuge. Or sabotage through denial of service or DNS cache poisoning.\\
+
+\section{Remote Access}
+Remote access is the last on my list of positions, but similar to LAN access, it can be dangerous if not properly defended against. Most of attacks for remote access involve exploiting weaknesses that are found in web hosting. This is because websites are extremely complex, diverse, and common. As a result, there are a lot of ways to exploit web services.\\
+
+
+\section{Lockpicking}
+Lockpicking is a simple process of exploiting weaknesses in the design of locks. The most commons locks, pin-and-tumbler locks, can be exploited with a simple pick set. The main flaw I see in physical locks is that they provide a false sense of security. A defender should see a lock as a time investment for the offender, not as an absolute block for them.\\
+I omitted other forms of breaking and entering because of the ambiguity in not knowing the target, but often buildings have softer areas, such as a window, that can be exploited without having to pick a lock.\\
+
+\section{Encryption}
+Similar to lockpicking, encryption should be viewed from the defensive perspective in terms of a time investment for the offender. Especially with the dramatic increase in performance we see with new technologies, simply encrypting information is not sufficient.\\
+Another point to note is that even if the information is encrypted, it can still be taken by the attacker if the encryption is not properly done. This is analogous to buying an expensive lock for the door of a building and leaving the window unlocked.\\
+
+\section{Firewalls}
+As I stated earlier, a firewall is more of a gate than it is a wall. A firewall can provide good protection against known attacks and known attackers, but they may lure the defender into a false sense of security similar to the previous two defensive positions. 
+
+\section{Intrusion detection}
+Intrusion detection is the defensive position that has the most variability. If setup right, an intrusion detection system can be a great way to defend a system, as it allows for access to the system while still providing sound defense. That said, intrusion detection is probably the most difficult to setup, and requires the defender to remain vigilant.\\
+
+\section{Forensics}
+Forensics is not so much a defense as it is a deterrent, as an attacker may not attack a target they would otherwise exploit if they fear redemption from the defending organization. I included storage forensic tools and memory forensic tools, these tools can be used on a dead drive to recreate the past events to determine what the attacker was doing with the system. I also included a couple of tools that I use on my home system to check to make sure that my security has not been breached.\\
+I did not include other parts of forensics, I realize that most devices inside computes have firmware that can be modified, but would be too case specific to put into the contingency plan.\\
+
 \end{document}
