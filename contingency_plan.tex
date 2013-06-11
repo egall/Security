@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{enumerate}
+
+\title{Contingency Plan}
+\author{Erik Steggall \\ esteggall@soe.ucsc.edu}
+
+\date{}
+
+\setcounter{secnumdepth}{-1}
+
+\begin{document}
+
+\pagestyle{empty}
+\maketitle
+
+\section{Abstract}
+
+
+Information security is a field that has emerged recently as a result of the rapid digitization of information brought about by advances in technology over the past decade. As a result, we have a threat model that has never been analyzed in history. We are currently in a sort of "wild west" phase of information security. It is difficult to study a field that is expanding so quickly, common attacks can be defended against, only to give rise to new threats. The dynamic nature of the field of information security is very similar to that of martial arts. The fluidity of both games makes individual tactics very hard to map out, but each has core concepts that can be exploited to gain advantage on ones opponent. In martial arts, I found it is very helpful to draw out a contingency plan, as these core concepts remain static even when the underlying tactics are fluid. This poster is an attempt to draw out a contingency plan for the field of information security. 
+
+\section{Contribution}
+
+This work attempts to define the core positions that occur in information security. This first branches into offense and defense. The offensive side of computer security requires a more dynamic mindset, but I broke it into four categories depending on the offender's access levels. Those being; login access, physical access, LAN access, and remote access. While these positions are less desirable as they descend, no position is any less dangerous to defend against than any other. The defensive side I split into five categories; physical locks, encryption, firewalls, intrusion detection, and forensics. Converse to the offensive positions, the defensive side deals with mitigating attacks depending on the adversary's existing access level. \\
+\section{Offensive}
+The offensive positions depend largely on the existing levels of access that one has to their opponent's system. This starts off with a user that already has access to their target's system, meaning they have the ability to log into their target's system. This does not necessarily imply full access. From there I decided that physical access to a machine or system would be the next most desirable.  I am ambivalent about this position as I find the number of attacks are limited, however for the defensive perspective an opponent with physical access is very dangerous. The next position is having access to the local area network. This position has the most possible attacks in my opinion, but can be mitigated if defended properly. Finally, I have remote access, meaning the opponent has a system that preforms a remote service that the attacker has access to. Remote access is similar to LAN access in that it has a large number of possible attacks, but the known attacks can be easily defended against. 
+\section{Defensive}
+The defensive positions are the opposite of the offensive access levels. The best position being one where the opponent has no access to the targeted system. This can be achieved by having a proper locking system. I consider encryption and physical locks to be similar in this respect, but choose to keep them separate to avoid confusion. The next line of defense would be the firewall, this may be confusing, as the locks/encryption serve as more of a "wall" and the firewall is more like a "gate" would be on the wall. None the less, the firewall has the ability to keep the attacker on the perimeter of the system by blocking known attacks/opponents. In most cases however, it will be necessary to give access to the computer system being defended. This opens up routes for the attacker to get into the system. In this case, the locks and firewalls wont do much good, the next line of defense is having a robust intrusion detection system. A good intrusion detection system will keep records of anomalies, which usually indicate suspicious activity. Additionally, most intrusion detection systems also have some sort of alert to let the defending party know that there is questionable activity going on. Finally, we have the case where the system has already been compromised. In this case, it is necessary to do forensics in order to determine what the attacker did and how they got into the system. This would be the last ditch effort, but can also be preventative in the case that an attacker is wary of intruding for fear of future retribution. 
+
+\end{document}
