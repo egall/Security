@@ -1,0 +1,61 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+\tikzstyle{tool} = [draw, ellipse, fill=orange!20, node distance=2cm,
+    minimum height=2em, text width = 0.5cm, text centered]
+    
+\begin{tikzpicture}[node distance = 3cm, sibling distance=2cm, auto]
+    % Place nodes
+    \node [decision] (firewall) {Firewall};
+    \node [cloud, right=2cm of firewall] (network) {Network\\Layer}
+        child { node (ufw) [tool] {UFW}}
+        child { node (iptables) [tool] {IPtables}}
+        child { node (pf) [tool] {PF}}
+        child { node (shorewall) [tool] {Shorewall}}
+        child { node (ipcop) [tool] {IPCop}};
+     \node [cloud, left=2cm of firewall] (proxies) {Proxies}
+        child { node (loadbal) [attacktype] {Load\\Balancer}};
+        
+%        child { node (idor) [attacktype] {Insecure\\Direct\\Object\\Reference}}
+%        child { node (rfi) [attacktype] {Remote\\File\\Include}}
+%        child { node (seshfix) [attacktype] {Session\\Fixation}}
+%        child { node (cominj) [attacktype, below=4cm of yaremote]  {Command\\Injection}
+%            child { node (nc) [tool] {Netcat}}
+%        }
+%        child { node (clickj) [attacktype] {Click\\Jack}}
+%        child { node (sql) [attacktype] {SQL\\Injection}};
+
+    \node [cloud, below=2cm of firewall] (application) {Application\\Layer} 
+        child { node (modsec) [tool] {ModSecurity}}
+        child { node (apparmor) [tool] {AppArmor}}
+        child { node (zorp) [tool] {Zorp}}
+        child { node (systrace) [tool] {Systrace}}
+        child { node (winroute) [tool] {WinRoute}}
+        child { node (wingate) [tool] {WinGate}};
+
+    
+    % Draw edges
+    \path [line] (firewall) -- (network);
+    \path [line] (firewall) -- (application);
+    \path [line] (firewall) -- (proxies);
+\end{tikzpicture}
+
+
+\end{document}

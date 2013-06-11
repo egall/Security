@@ -1,0 +1,64 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+\tikzstyle{tool} = [draw, ellipse, fill=orange!20, node distance=2cm,
+    minimum height=2em, text width = 0.5cm, text centered]
+    
+\begin{tikzpicture}[node distance = 3cm, sibling distance=2cm, auto]
+    % Place nodes
+    \node [decision] (forensics) {Forensics};
+    \node [cloud, below=4cm of forensics] (dead) {Dead}
+        child { node (storage) [attacktype, left=2cm of dead] {Storage}
+           child { node (tsk) [tool] {The\\Sleuth\\Kit}}
+           child { node (encase) [tool] {EnCase}}
+           child { node (ftk) [tool] {FTK}}
+           child { node (tct) [tool, below=2cm of storage] {The\\Coroner's\\Toolkit}}
+        }
+        child { node (memory) [attacktype, right=2cm of dead] {Memory}
+            child { node (lime) [tool] {LiME}}
+            child { node (draugr) [tool] {draugr}}
+            child { node (volatilitux) [tool] {Volatilitux}}
+            child { node (memfetch) [tool] {Memfetch}}
+            child { node (memdump) [tool] {MemDump}}
+        };
+        
+%        child { node (idor) [attacktype] {Insecure\\Direct\\Object\\Reference}}
+%        child { node (rfi) [attacktype] {Remote\\File\\Include}}
+%        child { node (seshfix) [attacktype] {Session\\Fixation}}
+%        child { node (cominj) [attacktype, below=4cm of yaremote]  {Command\\Injection}
+%            child { node (nc) [tool] {Netcat}}
+%        }
+%        child { node (clickj) [attacktype] {Click\\Jack}}
+%        child { node (sql) [attacktype] {SQL\\Injection}};
+
+    \node [cloud, left=2cm of forensics] (live) {Live} 
+        child { node (lastcomm) [tool] {lastcomm}}
+        child { node (lastlog) [tool] {lastlog}}
+        child { node (ac) [tool] {ac}}
+        child { node (sa) [tool] {sa}};
+
+    
+    % Draw edges
+    \path [line] (forensics) -- (dead);
+    \path [line] (forensics) -- (live);
+\end{tikzpicture}
+
+
+\end{document}

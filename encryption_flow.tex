@@ -1,0 +1,59 @@
+
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=4cm, inner sep=-2pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{attacktype} = [draw, ellipse,fill=green!20, node distance=4cm,
+    minimum height=2em, text width = 1cm]
+\tikzstyle{tool} = [draw, ellipse, fill=orange!20, node distance=2cm,
+    minimum height=2em, text width = 0.5cm, text centered]
+    
+\begin{tikzpicture}[node distance = 3cm, sibling distance=2cm, auto]
+    % Place nodes
+    \node [decision] (encrypt) {Encryption};
+    \node [cloud, right=2cm of encrypt] (symetric) {Symetric Key}
+        child { node (stream) [attacktype] {Stream\\Cipher}
+            child { node (rc4) [tool] {RC4}}
+            child { node (estream) [tool] {EStream}}
+        }
+        child { node (block) [attacktype] {Block\\Cipher}};
+        
+%        child { node (idor) [attacktype] {Insecure\\Direct\\Object\\Reference}}
+%        child { node (rfi) [attacktype] {Remote\\File\\Include}}
+%        child { node (seshfix) [attacktype] {Session\\Fixation}}
+%        child { node (cominj) [attacktype, below=4cm of yaremote]  {Command\\Injection}
+%            child { node (nc) [tool] {Netcat}}
+%        }
+%        child { node (clickj) [attacktype] {Click\\Jack}}
+%        child { node (sql) [attacktype] {SQL\\Injection}};
+
+    \node [cloud, left=2cm of encrypt] (public) {Public Key} 
+        child { node (dss) [tool, left=2cm of public] {DSS}}
+        child { node (elgamal) [tool] {ElGamal}}
+        child { node (pailier) [tool] {Pailier}}
+        child { node (rsa) [tool] {RSA}}
+        child { node (cs) [tool] {Cramer\\Shoup}}
+        child { node (yak) [tool] {YAK}}
+        child { node (diffhel) [tool] {Diffie\\Helman}};
+
+    
+    % Draw edges
+    \path [line] (encrypt) -- (symetric);
+    \path [line] (encrypt) -- (public);
+\end{tikzpicture}
+
+
+\end{document}
