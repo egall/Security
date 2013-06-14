@@ -1,67 +1,150 @@
 \documentclass{article}
 
-\usepackage[latin1]{inputenc}
-\usepackage{enumerate}
 
-\title{Contingency Plan}
-\author{Erik Steggall \\ esteggall@soe.ucsc.edu}
+
+\usepackage[latin1]{inputenc}
+\usepackage{enumerate,graphicx,hyperref}
+
+\title{Information Security\\ Contingency Plan}
+\author{by\\ Erik Steggall \\ esteggall@soe.ucsc.edu}
 
 \date{}
 
 \setcounter{secnumdepth}{-1}
 
-\begin{document}
 
-\pagestyle{empty}
+
+\begin{document}
 \maketitle
+\pagestyle{empty}
+
 
 \section{Abstract}
+Information security is a field that has emerged recently as a result of the rapid digitization of information brought about by rapid advances in technology over the past decades. As a result we have a threat model that has never been observed in history. We are currently in a sort of "wild west" phase of information security. It is difficult to study a field that is expanding so quickly, known attacks can be patched or mitigated, but the underlying structure of these systems leaves them open to new threats. The dynamic nature of the field of information security is very similar to that of martial arts, the fluidity of both games makes individual tactics very hard to map out, but each has core concepts that can be exploited to gain advantage on ones opponent. In martial arts, I found it is very helpful to draw out a contingency plan, as these core concepts remain static even when the underlying tactics are fluid. This paper is an attempt to draw out a contingency plan for the field of information security. \\
 
 
-Information security is a field that has emerged recently as a result of the rapid digitization of information brought about by advances in technology over the past decade. As a result, we have a threat model that has never been analyzed in history. We are currently in a sort of "wild west" phase of information security. It is difficult to study a field that is expanding so quickly, common attacks can be defended against, only to give rise to new threats. The dynamic nature of the field of information security is very similar to that of martial arts. The fluidity of both games makes individual tactics very hard to map out, but each has core concepts that can be exploited to gain advantage on ones opponent. In martial arts, I found it is very helpful to draw out a contingency plan, as these core concepts remain static even when the underlying tactics are fluid. This poster is an attempt to draw out a contingency plan for the field of information security. 
+\section{Background}
+\subsection{Contingency Plan}
+This paper borrows the idea of a contingency plan from mixed martial arts. The idea behind a contingency plan is to organize a vast amount of information in a manner that makes it easier to make quick decisions depending on known, predictable scenarios. For simplicities sake, I will describe a contingency plan for Brazilian Jujitsu as a full mixed martial arts plan is much more complex.\\
+In Brazilian Jujitsu there are an infinite number of submissions, combinations, counters, and counters to counters available at any given point depending on timing, positioning and ability of the fighters. This makes for a very complex sport in which making a simple mistake such as leaving an arm unprotected has potential to instantly loose the you the fight. While this may seem overwhelming, the game can be broken down into eight main positions listed in order of most desirable to least desirable; back-control, mount, side-mount, guard, half-guard, half-guarded, guarded, side-mounted, mounted, and back-defense. The first four being primarily offensive positions, and the latter being defensive positions.\\
+While the primary goal of the game is to submit the opponent, either by choking them out or breaking a limb, the secondary goal of climbing the position ladder is typically the focus of most fights, which parallels to privilege escalation in the field of information security. By breaking down the game into positions the participant is able to more fully realize and exploit their available options by knowing how to; 1) Defend/maintain their current position, 2) Advance their position, 3)  Finish through submission. \\
+Creating a contingency plan has vastly improved my martial arts game, it allows me to organize my knowledge in a practical manner that gives me direction in situations that require quick action, as well as providing a platform that I can easily add onto in the future. I feel my information security "game" could use the same level of organization as my knowledge was previously scattered through pages of unorganized notes or pages throughout the web.\\ Background story: I recently went to Symentec's cyber challenge and spent 90\% of the time sifting through my poorly organized notes...\\
 
-\section{Contribution}
+\subsection{Contribution}
+This work attempts to define the core positions that occur in information security. This first branches into offense and defense. The offensive side of computer security requires a more dynamic mindset, but I broke it into four categories depending on the offender's access levels. Those being; physical access, login credentials, LAN access, and remote access. While these positions are less desirable as they descend, no position is any less dangerous to defend against than any other. The defensive side I split into five categories; physical locks, encryption, firewalls, intrusion detection, and forensics. Converse to the offensive positions, the defensive side deals with mitigating attacks depending on the adversary's existing access level. \\
 
-This work attempts to define the core positions that occur in information security. This first branches into offense and defense. The offensive side of computer security requires a more dynamic mindset, but I broke it into four categories depending on the offender's access levels. Those being; login access, physical access, LAN access, and remote access. While these positions are less desirable as they descend, no position is any less dangerous to defend against than any other. The defensive side I split into five categories; physical locks, encryption, firewalls, intrusion detection, and forensics. Converse to the offensive positions, the defensive side deals with mitigating attacks depending on the adversary's existing access level. \\
+
 \section{Offensive}
-The offensive positions depend largely on the existing levels of access that one has to their opponent's system. This starts off with a user that already has access to their target's system, meaning they have the ability to log into their target's system. This does not necessarily imply full access. From there I decided that physical access to a machine or system would be the next most desirable.  I am ambivalent about this position as I find the number of attacks are limited, however for the defensive perspective an opponent with physical access is very dangerous. The next position is having access to the local area network. This position has the most possible attacks in my opinion, but can be mitigated if defended properly. Finally, I have remote access, meaning the opponent has a system that preforms a remote service that the attacker has access to. Remote access is similar to LAN access in that it has a large number of possible attacks, but the known attacks can be easily defended against. 
+The offensive positions depend largely on the existing levels of access that one has to their opponent's system. This starts off with an offender who has physical access to their target's system. I am ambivalent about this position, as many of the attacks are case specific and would be easily detectable by the defending party, none the less, physical access is incredibly difficult to defend against. The next would be login credentials to the target system, meaning they have the ability to log into their target's system. This does not necessarily imply full access, so privilege escalation attacks are the main focus of this position. The next position is having access to the local area network. This position has the most possible attacks in my opinion, but can be easily mitigated if defended properly. Finally, I have remote access, meaning the opponent has a system that preforms a remote service that the attacker has access to. Remote access is similar to LAN access in that it has a large number of possible attacks, but the known attacks can be easily defended against. \\
+
+
 \section{Defensive}
-The defensive positions are the opposite of the offensive access levels. The best position being one where the opponent has no access to the targeted system. This can be achieved by having a proper locking system. I consider encryption and physical locks to be similar in this respect, but choose to keep them separate to avoid confusion. The next line of defense would be the firewall, this may be confusing, as the locks/encryption serve as more of a "wall" and the firewall is more like a "gate" would be on the wall. None the less, the firewall has the ability to keep the attacker on the perimeter of the system by blocking known attacks/opponents. In most cases however, it will be necessary to give access to the computer system being defended. This opens up routes for the attacker to get into the system. In this case, the locks and firewalls wont do much good, the next line of defense is having a robust intrusion detection system. A good intrusion detection system will keep records of anomalies, which usually indicate suspicious activity. Additionally, most intrusion detection systems also have some sort of alert to let the defending party know that there is questionable activity going on. Finally, we have the case where the system has already been compromised. In this case, it is necessary to do forensics in order to determine what the attacker did and how they got into the system. This would be the last ditch effort, but can also be preventative in the case that an attacker is wary of intruding for fear of future retribution. 
+For the defensive positions the best position is one where the opponent has no access to the targeted system. This can be achieved by having a proper locking system. I consider encryption and physical locks to be similar in this respect, but choose to keep them separate to avoid confusion. The next line of defense would be the firewall, this may be confusing, as the locks/encryption serve as more of a "wall" and the firewall is more analogous to a "gate" as it regulates access to the system. None the less, the firewall has the ability to keep the attacker on the perimeter of the system by blocking known attacks/opponents. In most cases however, it will be necessary to give access to the computer system being defended. This opens up routes for the attacker to get into the system. In this case, the locks and firewalls wont do much good, the next line of defense is having a robust intrusion detection system. A good intrusion detection system will keep records of anomalies, which usually indicate suspicious activity. Additionally, most intrusion detection systems also have some sort of alert to let the defending party know that there is questionable activity going on. Finally, we have the case where the system has already been compromised. In this case, it is necessary to do forensics in order to determine what the attacker did and how they got into the system. This would be the last ditch effort, but can also be preventative in the case that an attacker is wary of intruding for fear of future retribution. \\
+\pagebreak
+
+\section{Physical Access}
+
+\section{Primary offensive position}
+Physical access is an extremely dangerous position as the offender has many attack options, however much of the power of physical access depends on what the attackers motives are. If the attacker wishes to do harm and does not run the risk of redemption, sabotage or confiscation are both valid and effective options. If the attacker wishes to be more stealthy a hardware modification is a valid option too. \\ 
+One attack that I omitted from this is device swapping, as it is very case specific and in most cases infeasible.\\
+If the attacker does not have physical access, I imagine they have two options: picking a lock or breaking in by some other means, or by manipulating a person who does have access via social engineering.\\
+\subsection{Physical access flow chart}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{phys_flow.pdf}
+\hspace*{-3cm}
+\end{figure}
+
+\subsection{Narrative}
+\subsection{example 1}
+
+\begin{verbatim}
+
+# Starting using a CentOS system, but should work for most generic Linux distributions.
+# Interrupt boot sequence to get GRUB menu
+# 
+
+\end{verbatim}
+Source: \url{http://www.tecmint.com/how-to-hack-your-own-linux-system/}\\
+
+
+\pagebreak
 
 
 \section{Login Capabilities}
-
 This is the primary attack position. From this position the attacker already has access to the system that they want to compromise, however they may want to expand their privileges which can be done in a number of ways. The tactics I have listed are return-to-libc, chroot, set UID, format string, and race conditions. Examples of all of these attacks can be found at: www.cis.syr.edu/~wedu/seed/all\_labs.html.\\
 I didn't include setting up a backdoor because it is assumed that the user already has access, but it should be noted that if the privilege escalation is successful a backdoor may be a necessary option.\\
-I also omitted anything about covering up tracks, as I assumed that it was too case specific, but this is also an aspect that I need to do more research on.\\
-
-\section{Physical Access}
-Physical access is an extremely dangerous position and should probably be listed at the top of the offensive positions. Much of the power of physical access depends on what the attackers motives are. If the attacker wishes to do harm and does not run the risk of redemption, sabotage or confiscation are both valid and effective options. If the attacker wishes to be more stealthy a hardware modification is a valid option too. One attack that I omitted from this swapping, as it is very case specific and in most cases infeasible.\\
-If the attacker does not have physical access, I imagine they have two options: picking a lock or breaking in by some other means, or by manipulating a person who does have access via social engineering.\\
+I omitted anything about covering up tracks, as I assumed that it was too case specific, but this is also an aspect that I need to do more research on.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{log_flow.pdf}
+\hspace*{-3cm}
+\end{figure}
+\pagebreak
 
 \section{LAN access}
 This is the position that has the most potential attacks, however if the target system is properly defended it is very difficult to pull most off. Though this diagram lists most of the attacks on the same level, there would be more of a progression of attacks for the offender. Most attacks would start with either a network scan, or by passively sniffing the network to determine the exact position of the target computer. From there, a number of exploits can be utilized. I included most of them under the protocol weakness attack category (examples can be found at the Syracuse seed labs referenced above), some of them being exploits that I put in the remote access position to avoid redundancy. Other effective attacks are man-in-the-middle attacks such as Subterfuge. Or sabotage through denial of service or DNS cache poisoning.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{lan.pdf}
+\end{figure}
+\pagebreak
 
 \section{Remote Access}
-Remote access is the last on my list of positions, but similar to LAN access, it can be dangerous if not properly defended against. Most of attacks for remote access involve exploiting weaknesses that are found in web hosting. This is because websites are extremely complex, diverse, and common. As a result, there are a lot of ways to exploit web services.\\
-
+Remote access is the last on my list of offensive positions, but similar to LAN access, it can be dangerous if not properly defended against. Most of attacks for remote access involve exploiting weaknesses that are found in web hosting. This is because websites are extremely complex, diverse, and common. As a result, there are a lot of ways to exploit web services.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{remote.pdf}
+\end{figure}
+\pagebreak
 
 \section{Lockpicking}
 Lockpicking is a simple process of exploiting weaknesses in the design of locks. The most commons locks, pin-and-tumbler locks, can be exploited with a simple pick set. The main flaw I see in physical locks is that they provide a false sense of security. A defender should see a lock as a time investment for the offender, not as an absolute block for them.\\
 I omitted other forms of breaking and entering because of the ambiguity in not knowing the target, but often buildings have softer areas, such as a window, that can be exploited without having to pick a lock.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.95]{lock.pdf}
+\end{figure}
+\pagebreak
 
 \section{Encryption}
 Similar to lockpicking, encryption should be viewed from the defensive perspective in terms of a time investment for the offender. Especially with the dramatic increase in performance we see with new technologies, simply encrypting information is not sufficient.\\
 Another point to note is that even if the information is encrypted, it can still be taken by the attacker if the encryption is not properly done. This is analogous to buying an expensive lock for the door of a building and leaving the window unlocked.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{encryption.pdf}
+\end{figure}
+\pagebreak
 
 \section{Firewalls}
-As I stated earlier, a firewall is more of a gate than it is a wall. A firewall can provide good protection against known attacks and known attackers, but they may lure the defender into a false sense of security similar to the previous two defensive positions. 
+As I stated earlier, a firewall is more of a gate than it is a wall. A firewall can provide good protection against known attacks and known attackers, but they may lure the defender into a false sense of security similar to the previous two defensive positions. \\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{fire_flow.pdf}
+\end{figure}
+\pagebreak
 
 \section{Intrusion detection}
 Intrusion detection is the defensive position that has the most variability. If setup right, an intrusion detection system can be a great way to defend a system, as it allows for access to the system while still providing sound defense. That said, intrusion detection is probably the most difficult to setup, and requires the defender to remain vigilant.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=1.05]{ids.pdf}
+\end{figure}
+\pagebreak
 
 \section{Forensics}
-Forensics is not so much a defense as it is a deterrent, as an attacker may not attack a target they would otherwise exploit if they fear redemption from the defending organization. I included storage forensic tools and memory forensic tools, these tools can be used on a dead drive to recreate the past events to determine what the attacker was doing with the system. I also included a couple of tools that I use on my home system to check to make sure that my security has not been breached.\\
+Forensics is not so much a defense as it is a deterrent, as an attacker may not attack a target they would otherwise exploit if they fear redemption from the defending organization. I included storage forensic tools and memory forensic tools, these tools can be used on a dead drive to recreate the past events to determine what the attacker was doing with the system. I included a couple of tools that I use on my home system to check to make sure that my security has not been breached under the live category.\\
 I did not include other parts of forensics, I realize that most devices inside computes have firmware that can be modified, but would be too case specific to put into the contingency plan.\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.75]{forensics.pdf}
+\end{figure}
+\pagebreak
+
+\section{Final Remarks}
+
+This paper aims at consolidating my notes and current knowledge of the information security field into an easy-to-understand format. This is by no means a complete contingency plan, it does provide a good base for me to add onto later. In the near future I hope to expand the LAN and remote portions on the offensive side, and the IDS portion on the defensive side. This summer I plan on going to the western regional cyberboot camp put on by San Jose State, hopefully this work will help me out in my participation in that. Additionally, I will add my future notes to this contingency plan and evolve it as my understanding of the field progresses. I also plan on getting some feedback from DJ and others to fill in areas that I don't have as much base in to make sure that there are not major holes in my outlook. I'm glad that I got the chance to finally work on this, and regret the fact that I didn't start sooner.\\
+p.s.\\
+Posters are hard.\\
 
 \end{document}
